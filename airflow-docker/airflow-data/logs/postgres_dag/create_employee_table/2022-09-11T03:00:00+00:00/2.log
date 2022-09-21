@@ -1,0 +1,157 @@
+[2022-09-13 13:37:20,734] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [queued]>
+[2022-09-13 13:37:20,875] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [queued]>
+[2022-09-13 13:37:20,879] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 13:37:20,883] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-13 13:37:20,885] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 13:37:20,964] {taskinstance.py:1038} INFO - Executing <Task(PostgresOperator): create_employee_table> on 2022-09-11T03:00:00+00:00
+[2022-09-13 13:37:20,987] {standard_task_runner.py:51} INFO - Started process 40676 to run task
+[2022-09-13 13:37:21,029] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'postgres_dag', 'create_employee_table', '2022-09-11T03:00:00+00:00', '--job-id', '25', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmp12qygozx']
+[2022-09-13 13:37:21,050] {standard_task_runner.py:76} INFO - Job 25: Subtask create_employee_table
+[2022-09-13 13:37:21,360] {logging_mixin.py:103} INFO - Running <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-13 13:37:21,675] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=postgres_dag
+AIRFLOW_CTX_TASK_ID=create_employee_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-11T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-11T03:00:00+00:00
+[2022-09-13 13:37:21,679] {postgres.py:69} INFO - Executing: 
+            create table if not exists employee(
+                emp_id varchar,
+                first_name varchar,
+                last_name varchar,
+                designation varchar
+                primary key (emp_id)
+            )
+        
+[2022-09-13 13:37:21,793] {base.py:74} INFO - Using connection to: id: local_postgres. Host: 0.0.0.0, Port: 5432, Schema: airflow, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-09-13 13:37:21,830] {taskinstance.py:1396} ERROR - could not connect to server: Connection refused
+	Is the server running on host "0.0.0.0" and accepting
+	TCP/IP connections on port 5432?
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 71, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 173, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/hooks/postgres.py", line 108, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.6/site-packages/psycopg2/__init__.py", line 127, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "0.0.0.0" and accepting
+	TCP/IP connections on port 5432?
+
+[2022-09-13 13:37:21,917] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=postgres_dag, task_id=create_employee_table, execution_date=20220911T030000, start_date=20220913T133720, end_date=20220913T133721
+[2022-09-13 13:37:22,120] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-13 13:40:12,916] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [queued]>
+[2022-09-13 13:40:13,011] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [queued]>
+[2022-09-13 13:40:13,014] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 13:40:13,015] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-13 13:40:13,017] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 13:40:13,065] {taskinstance.py:1038} INFO - Executing <Task(PostgresOperator): create_employee_table> on 2022-09-11T03:00:00+00:00
+[2022-09-13 13:40:13,077] {standard_task_runner.py:51} INFO - Started process 43569 to run task
+[2022-09-13 13:40:13,107] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'postgres_dag', 'create_employee_table', '2022-09-11T03:00:00+00:00', '--job-id', '51', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmpc7tpt1sx']
+[2022-09-13 13:40:13,114] {standard_task_runner.py:76} INFO - Job 51: Subtask create_employee_table
+[2022-09-13 13:40:13,234] {logging_mixin.py:103} INFO - Running <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-13 13:40:13,386] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=postgres_dag
+AIRFLOW_CTX_TASK_ID=create_employee_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-11T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-11T03:00:00+00:00
+[2022-09-13 13:40:13,390] {postgres.py:69} INFO - Executing: 
+            create table if not exists employee(
+                emp_id varchar,
+                first_name varchar,
+                last_name varchar,
+                designation varchar
+                primary key (emp_id)
+            )
+        
+[2022-09-13 13:40:13,453] {base.py:74} INFO - Using connection to: id: local_postgres. Host: host.docker.internal, Port: 5432, Schema: airflow, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-09-13 13:40:13,480] {taskinstance.py:1396} ERROR - FATAL:  database "airflow" does not exist
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 71, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 173, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/hooks/postgres.py", line 108, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.6/site-packages/psycopg2/__init__.py", line 127, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: FATAL:  database "airflow" does not exist
+
+[2022-09-13 13:40:13,496] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=postgres_dag, task_id=create_employee_table, execution_date=20220911T030000, start_date=20220913T134012, end_date=20220913T134013
+[2022-09-13 13:40:13,586] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-13 14:33:21,223] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [queued]>
+[2022-09-13 14:33:21,279] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [queued]>
+[2022-09-13 14:33:21,281] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 14:33:21,283] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-13 14:33:21,285] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 14:33:21,329] {taskinstance.py:1038} INFO - Executing <Task(PostgresOperator): create_employee_table> on 2022-09-11T03:00:00+00:00
+[2022-09-13 14:33:21,336] {standard_task_runner.py:51} INFO - Started process 28724 to run task
+[2022-09-13 14:33:21,348] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'postgres_dag', 'create_employee_table', '2022-09-11T03:00:00+00:00', '--job-id', '64', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmpt2rg3juc']
+[2022-09-13 14:33:21,355] {standard_task_runner.py:76} INFO - Job 64: Subtask create_employee_table
+[2022-09-13 14:33:21,545] {logging_mixin.py:103} INFO - Running <TaskInstance: postgres_dag.create_employee_table 2022-09-11T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-13 14:33:21,656] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=postgres_dag
+AIRFLOW_CTX_TASK_ID=create_employee_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-11T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-11T03:00:00+00:00
+[2022-09-13 14:33:21,659] {postgres.py:69} INFO - Executing: 
+            create table if not exists employee(
+                emp_id varchar,
+                first_name varchar,
+                last_name varchar,
+                designation varchar
+                primary key (emp_id)
+            )
+        
+[2022-09-13 14:33:21,691] {base.py:74} INFO - Using connection to: id: local_postgres. Host: host.docker.internal, Port: 5432, Schema: student, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-09-13 14:33:21,713] {dbapi.py:180} INFO - Running statement: 
+            create table if not exists employee(
+                emp_id varchar,
+                first_name varchar,
+                last_name varchar,
+                designation varchar
+                primary key (emp_id)
+            )
+        , parameters: None
+[2022-09-13 14:33:21,718] {taskinstance.py:1396} ERROR - syntax error at or near "("
+LINE 7:                 primary key (emp_id)
+                                    ^
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 71, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 184, in run
+    cur.execute(sql_statement)
+psycopg2.errors.SyntaxError: syntax error at or near "("
+LINE 7:                 primary key (emp_id)
+                                    ^
+
+[2022-09-13 14:33:21,728] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=postgres_dag, task_id=create_employee_table, execution_date=20220911T030000, start_date=20220913T143321, end_date=20220913T143321
+[2022-09-13 14:33:21,805] {local_task_job.py:118} INFO - Task exited with return code 1

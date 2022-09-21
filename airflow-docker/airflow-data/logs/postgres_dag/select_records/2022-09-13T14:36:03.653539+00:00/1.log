@@ -1,0 +1,29 @@
+[2022-09-13 14:36:14,352] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.select_records 2022-09-13T14:36:03.653539+00:00 [queued]>
+[2022-09-13 14:36:14,395] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.select_records 2022-09-13T14:36:03.653539+00:00 [queued]>
+[2022-09-13 14:36:14,397] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 14:36:14,398] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-13 14:36:14,399] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 14:36:14,429] {taskinstance.py:1038} INFO - Executing <Task(PostgresOperator): select_records> on 2022-09-13T14:36:03.653539+00:00
+[2022-09-13 14:36:14,437] {standard_task_runner.py:51} INFO - Started process 31858 to run task
+[2022-09-13 14:36:14,447] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'postgres_dag', 'select_records', '2022-09-13T14:36:03.653539+00:00', '--job-id', '74', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmph8u0zdlb']
+[2022-09-13 14:36:14,454] {standard_task_runner.py:76} INFO - Job 74: Subtask select_records
+[2022-09-13 14:36:14,552] {logging_mixin.py:103} INFO - Running <TaskInstance: postgres_dag.select_records 2022-09-13T14:36:03.653539+00:00 [running]> on host 27377494ab8b
+[2022-09-13 14:36:14,693] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=postgres_dag
+AIRFLOW_CTX_TASK_ID=select_records
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T14:36:03.653539+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-09-13T14:36:03.653539+00:00
+[2022-09-13 14:36:14,695] {postgres.py:69} INFO - Executing: 
+        select * from employee
+                
+[2022-09-13 14:36:14,739] {base.py:74} INFO - Using connection to: id: local_postgres. Host: host.docker.internal, Port: 5432, Schema: student, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-09-13 14:36:14,785] {dbapi.py:180} INFO - Running statement: 
+        select * from employee
+                , parameters: None
+[2022-09-13 14:36:14,791] {dbapi.py:186} INFO - Rows affected: 4
+[2022-09-13 14:36:14,815] {taskinstance.py:1142} INFO - Marking task as SUCCESS. dag_id=postgres_dag, task_id=select_records, execution_date=20220913T143603, start_date=20220913T143614, end_date=20220913T143614
+[2022-09-13 14:36:15,234] {taskinstance.py:1195} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-09-13 14:36:15,261] {local_task_job.py:118} INFO - Task exited with return code 0

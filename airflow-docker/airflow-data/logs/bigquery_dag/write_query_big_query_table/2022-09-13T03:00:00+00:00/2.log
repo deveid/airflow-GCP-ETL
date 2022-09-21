@@ -1,0 +1,204 @@
+[2022-09-18 18:34:37,491] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:34:37,527] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:34:37,529] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:34:37,531] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-18 18:34:37,532] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:34:37,573] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): write_query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-18 18:34:37,587] {standard_task_runner.py:51} INFO - Started process 2504 to run task
+[2022-09-18 18:34:37,625] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'write_query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '292', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmph3bce0l3']
+[2022-09-18 18:34:37,635] {standard_task_runner.py:76} INFO - Job 292: Subtask write_query_big_query_table
+[2022-09-18 18:34:37,852] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-18 18:34:38,059] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=write_query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-18 18:34:38,075] {bigquery.py:680} INFO - Executing: 
+        select * from githubarchive.day.20220914 where actor.id=66800817
+            
+[2022-09-18 18:34:38,171] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 18:34:38,237] {bigquery.py:1510} INFO - Inserting job airflow_1663526078235613_4e8e27051e4b7eda1ea1c14d0ba14e9a
+[2022-09-18 18:34:39,348] {taskinstance.py:1396} ERROR - 403 Access Denied: Table githubarchive:day.20220914: User does not have permission to query table githubarchive:day.20220914, or perhaps it does not exist in location northamerica-northeast1.
+
+(job ID: airflow_1663526078235613_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2186, in run_query
+    job = self.insert_job(configuration=configuration, project_id=self.project_id)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 425, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1512, in insert_job
+    job.result()
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/query.py", line 1159, in result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/base.py", line 631, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/api_core/future/polling.py", line 134, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table githubarchive:day.20220914: User does not have permission to query table githubarchive:day.20220914, or perhaps it does not exist in location northamerica-northeast1.
+
+(job ID: airflow_1663526078235613_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+[2022-09-18 18:34:39,372] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_dag, task_id=write_query_big_query_table, execution_date=20220913T030000, start_date=20220918T183437, end_date=20220918T183439
+[2022-09-18 18:34:39,480] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-18 18:44:04,402] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:44:04,444] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:44:04,446] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:44:04,447] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-18 18:44:04,448] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:44:04,484] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): write_query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-18 18:44:04,494] {standard_task_runner.py:51} INFO - Started process 3798 to run task
+[2022-09-18 18:44:04,505] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'write_query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '336', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmplsg95d1c']
+[2022-09-18 18:44:04,512] {standard_task_runner.py:76} INFO - Job 336: Subtask write_query_big_query_table
+[2022-09-18 18:44:04,689] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-18 18:44:04,813] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=write_query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-18 18:44:04,821] {bigquery.py:680} INFO - Executing: 
+        select * from githubarchive.day.20220914 where actor.id=66800817
+            
+[2022-09-18 18:44:04,878] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 18:44:04,952] {bigquery.py:1510} INFO - Inserting job airflow_1663526644950256_4e8e27051e4b7eda1ea1c14d0ba14e9a
+[2022-09-18 18:44:06,329] {taskinstance.py:1396} ERROR - 403 Access Denied: Table githubarchive:day.20220914: User does not have permission to query table githubarchive:day.20220914, or perhaps it does not exist in location northamerica-northeast1.
+
+(job ID: airflow_1663526644950256_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2186, in run_query
+    job = self.insert_job(configuration=configuration, project_id=self.project_id)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 425, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1512, in insert_job
+    job.result()
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/query.py", line 1159, in result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/base.py", line 631, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/api_core/future/polling.py", line 134, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table githubarchive:day.20220914: User does not have permission to query table githubarchive:day.20220914, or perhaps it does not exist in location northamerica-northeast1.
+
+(job ID: airflow_1663526644950256_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+[2022-09-18 18:44:06,353] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_dag, task_id=write_query_big_query_table, execution_date=20220913T030000, start_date=20220918T184404, end_date=20220918T184406
+[2022-09-18 18:44:06,487] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-18 19:43:31,722] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 19:43:31,763] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 19:43:31,775] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 19:43:31,776] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-18 19:43:31,778] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 19:43:31,837] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): write_query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-18 19:43:31,854] {standard_task_runner.py:51} INFO - Started process 5543 to run task
+[2022-09-18 19:43:31,887] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'write_query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '445', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmpr1ep54b2']
+[2022-09-18 19:43:31,902] {standard_task_runner.py:76} INFO - Job 445: Subtask write_query_big_query_table
+[2022-09-18 19:43:32,108] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-18 19:43:32,266] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=write_query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-18 19:43:32,275] {bigquery.py:680} INFO - Executing: 
+        select * from githubarchive.day.20220914 where actor.id=66800817
+            
+[2022-09-18 19:43:32,331] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 19:43:32,400] {bigquery.py:1510} INFO - Inserting job airflow_1663530212397715_4e8e27051e4b7eda1ea1c14d0ba14e9a
+[2022-09-18 19:43:33,632] {taskinstance.py:1396} ERROR - 403 Access Denied: Table githubarchive:day.20220914: User does not have permission to query table githubarchive:day.20220914, or perhaps it does not exist in location northamerica-northeast1.
+
+(job ID: airflow_1663530212397715_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2186, in run_query
+    job = self.insert_job(configuration=configuration, project_id=self.project_id)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 425, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1512, in insert_job
+    job.result()
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/query.py", line 1159, in result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/base.py", line 631, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/api_core/future/polling.py", line 134, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table githubarchive:day.20220914: User does not have permission to query table githubarchive:day.20220914, or perhaps it does not exist in location northamerica-northeast1.
+
+(job ID: airflow_1663530212397715_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+[2022-09-18 19:43:33,668] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_dag, task_id=write_query_big_query_table, execution_date=20220913T030000, start_date=20220918T194331, end_date=20220918T194333
+[2022-09-18 19:43:33,793] {local_task_job.py:118} INFO - Task exited with return code 1

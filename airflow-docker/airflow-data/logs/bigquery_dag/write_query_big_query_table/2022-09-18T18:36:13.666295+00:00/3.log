@@ -1,0 +1,98 @@
+[2022-09-18 19:14:45,794] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-18T18:36:13.666295+00:00 [queued]>
+[2022-09-18 19:14:45,872] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-18T18:36:13.666295+00:00 [queued]>
+[2022-09-18 19:14:45,874] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 19:14:45,879] {taskinstance.py:1018} INFO - Starting attempt 3 of 3
+[2022-09-18 19:14:45,881] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 19:14:45,923] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): write_query_big_query_table> on 2022-09-18T18:36:13.666295+00:00
+[2022-09-18 19:14:45,935] {standard_task_runner.py:51} INFO - Started process 1123 to run task
+[2022-09-18 19:14:45,970] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'write_query_big_query_table', '2022-09-18T18:36:13.666295+00:00', '--job-id', '350', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmpnorn61ox']
+[2022-09-18 19:14:45,981] {standard_task_runner.py:76} INFO - Job 350: Subtask write_query_big_query_table
+[2022-09-18 19:14:46,115] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.write_query_big_query_table 2022-09-18T18:36:13.666295+00:00 [running]> on host 27377494ab8b
+[2022-09-18 19:14:46,236] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=write_query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-18T18:36:13.666295+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2022-09-18T18:36:13.666295+00:00
+[2022-09-18 19:14:46,243] {bigquery.py:680} INFO - Executing: 
+        select * from githubarchive.day.20220914 where actor.id=66800817
+            
+[2022-09-18 19:14:46,322] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 19:14:46,433] {bigquery.py:1510} INFO - Inserting job airflow_1663528486430154_4e8e27051e4b7eda1ea1c14d0ba14e9a
+[2022-09-18 19:14:47,192] {taskinstance.py:1396} ERROR - 403 POST https://bigquery.googleapis.com/bigquery/v2/projects/quick-keel-213611/jobs?prettyPrint=false: Access Denied: Project quick-keel-213611: User does not have bigquery.jobs.create permission in project quick-keel-213611.
+
+(job ID: airflow_1663528486430154_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+
+(job ID: airflow_1663528486430154_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2186, in run_query
+    job = self.insert_job(configuration=configuration, project_id=self.project_id)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 425, in inner_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1512, in insert_job
+    job.result()
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/query.py", line 1159, in result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/base.py", line 628, in result
+    self._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/query.py", line 1069, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/job/base.py", line 438, in _begin
+    timeout=timeout,
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/bigquery/client.py", line 640, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/api_core/retry.py", line 286, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/api_core/retry.py", line 184, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/cloud/_http.py", line 483, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Forbidden: 403 POST https://bigquery.googleapis.com/bigquery/v2/projects/quick-keel-213611/jobs?prettyPrint=false: Access Denied: Project quick-keel-213611: User does not have bigquery.jobs.create permission in project quick-keel-213611.
+
+(job ID: airflow_1663528486430154_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+
+(job ID: airflow_1663528486430154_4e8e27051e4b7eda1ea1c14d0ba14e9a)
+
+                       -----Query Job SQL Follows-----                       
+
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+   1:
+   2:        select * from githubarchive.day.20220914 where actor.id=66800817
+   3:            
+    |    .    |    .    |    .    |    .    |    .    |    .    |    .    |
+[2022-09-18 19:14:47,213] {taskinstance.py:1440} INFO - Marking task as FAILED. dag_id=bigquery_dag, task_id=write_query_big_query_table, execution_date=20220918T183613, start_date=20220918T191445, end_date=20220918T191447
+[2022-09-18 19:14:47,276] {local_task_job.py:118} INFO - Task exited with return code 1

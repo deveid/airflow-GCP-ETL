@@ -1,0 +1,263 @@
+[2022-09-17 01:35:33,477] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:35:33,574] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:35:33,577] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:35:33,579] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-17 01:35:33,580] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:35:33,713] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-17 01:35:33,775] {standard_task_runner.py:51} INFO - Started process 384 to run task
+[2022-09-17 01:35:33,815] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '145', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmpf5pnqfzy']
+[2022-09-17 01:35:33,823] {standard_task_runner.py:76} INFO - Job 145: Subtask query_big_query_table
+[2022-09-17 01:35:34,079] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-17 01:35:34,348] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-17 01:35:34,361] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-17 01:35:34,441] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-17 01:35:34,444] {taskinstance.py:1396} ERROR - [Errno 2] No such file or directory: '/airflow-data/support/keys/quick-keel-213611-3a513d19a935.json'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2054, in run_query
+    if not self.project_id:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 307, in project_id
+    _, project_id = self._get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 237, in _get_credentials_and_project_id
+    delegates=delegates,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 309, in get_credentials_and_project_id
+    return _CredentialProvider(*args, **kwargs).get_credentials_and_project()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 238, in get_credentials_and_project
+    credentials, project_id = self._get_credentials_using_key_path()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 286, in _get_credentials_using_key_path
+    self.key_path, scopes=self.scopes
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/oauth2/service_account.py", line 234, in from_service_account_file
+    filename, require=["client_email", "token_uri"]
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/auth/_service_account_info.py", line 72, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+FileNotFoundError: [Errno 2] No such file or directory: '/airflow-data/support/keys/quick-keel-213611-3a513d19a935.json'
+[2022-09-17 01:35:34,470] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220917T013533, end_date=20220917T013534
+[2022-09-17 01:35:34,597] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-17 01:37:36,032] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:37:36,212] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:37:36,216] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:37:36,217] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-17 01:37:36,218] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:37:36,330] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-17 01:37:36,352] {standard_task_runner.py:51} INFO - Started process 1502 to run task
+[2022-09-17 01:37:36,383] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '159', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmpvrk6v7s1']
+[2022-09-17 01:37:36,403] {standard_task_runner.py:76} INFO - Job 159: Subtask query_big_query_table
+[2022-09-17 01:37:36,827] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-17 01:37:37,144] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-17 01:37:37,163] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-17 01:37:37,263] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-17 01:37:37,269] {taskinstance.py:1396} ERROR - [Errno 2] No such file or directory: '/Users/david/Documents/airflow_pr/airflow-docker/airflow-data/support/keys/quick-keel-213611-3a513d19a935.json'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2054, in run_query
+    if not self.project_id:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 307, in project_id
+    _, project_id = self._get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 237, in _get_credentials_and_project_id
+    delegates=delegates,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 309, in get_credentials_and_project_id
+    return _CredentialProvider(*args, **kwargs).get_credentials_and_project()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 238, in get_credentials_and_project
+    credentials, project_id = self._get_credentials_using_key_path()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 286, in _get_credentials_using_key_path
+    self.key_path, scopes=self.scopes
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/oauth2/service_account.py", line 234, in from_service_account_file
+    filename, require=["client_email", "token_uri"]
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/auth/_service_account_info.py", line 72, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/david/Documents/airflow_pr/airflow-docker/airflow-data/support/keys/quick-keel-213611-3a513d19a935.json'
+[2022-09-17 01:37:37,323] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220917T013736, end_date=20220917T013737
+[2022-09-17 01:37:37,508] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-17 01:40:57,874] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:40:58,013] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:40:58,034] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:40:58,036] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-17 01:40:58,038] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:40:58,204] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-17 01:40:58,229] {standard_task_runner.py:51} INFO - Started process 3364 to run task
+[2022-09-17 01:40:58,283] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '180', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmplp6rjz54']
+[2022-09-17 01:40:58,302] {standard_task_runner.py:76} INFO - Job 180: Subtask query_big_query_table
+[2022-09-17 01:40:59,028] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-17 01:40:59,576] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-17 01:40:59,614] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-17 01:40:59,778] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-17 01:40:59,784] {taskinstance.py:1396} ERROR - [Errno 2] No such file or directory: '/opt/airflow/support/keys/quick-keel-213611-3a513d19a935.json'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 706, in execute
+    encryption_configuration=self.encryption_configuration,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 2054, in run_query
+    if not self.project_id:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 307, in project_id
+    _, project_id = self._get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/common/hooks/base_google.py", line 237, in _get_credentials_and_project_id
+    delegates=delegates,
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 309, in get_credentials_and_project_id
+    return _CredentialProvider(*args, **kwargs).get_credentials_and_project()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 238, in get_credentials_and_project
+    credentials, project_id = self._get_credentials_using_key_path()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 286, in _get_credentials_using_key_path
+    self.key_path, scopes=self.scopes
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/oauth2/service_account.py", line 234, in from_service_account_file
+    filename, require=["client_email", "token_uri"]
+  File "/home/airflow/.local/lib/python3.6/site-packages/google/auth/_service_account_info.py", line 72, in from_filename
+    with io.open(filename, "r", encoding="utf-8") as json_file:
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/support/keys/quick-keel-213611-3a513d19a935.json'
+[2022-09-17 01:40:59,835] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220917T014057, end_date=20220917T014059
+[2022-09-17 01:41:00,064] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-17 01:45:36,037] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:45:36,162] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-17 01:45:36,164] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:45:36,165] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-17 01:45:36,167] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-17 01:45:36,258] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-17 01:45:36,270] {standard_task_runner.py:51} INFO - Started process 6633 to run task
+[2022-09-17 01:45:36,327] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '201', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmpj96rhq46']
+[2022-09-17 01:45:36,339] {standard_task_runner.py:76} INFO - Job 201: Subtask query_big_query_table
+[2022-09-17 01:45:36,624] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-17 01:45:36,922] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-17 01:45:36,929] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-17 01:45:37,082] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-17 01:45:37,259] {bigquery.py:1510} INFO - Inserting job airflow_1663379137256541_06d2bf8b43be9b79a3e89edf3b53e367
+[2022-09-17 01:45:43,154] {taskinstance.py:1142} INFO - Marking task as SUCCESS. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220917T014536, end_date=20220917T014543
+[2022-09-17 01:45:43,704] {taskinstance.py:1195} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-09-17 01:45:43,785] {local_task_job.py:118} INFO - Task exited with return code 0
+[2022-09-18 18:33:16,251] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:33:16,613] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:33:16,632] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:33:16,635] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-18 18:33:16,637] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:33:16,901] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-18 18:33:17,012] {standard_task_runner.py:51} INFO - Started process 2098 to run task
+[2022-09-18 18:33:17,045] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '284', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmp3ijflhb7']
+[2022-09-18 18:33:17,074] {standard_task_runner.py:76} INFO - Job 284: Subtask query_big_query_table
+[2022-09-18 18:33:18,221] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-18 18:33:18,584] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-18 18:33:18,621] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-18 18:33:18,913] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 18:33:19,259] {bigquery.py:1510} INFO - Inserting job airflow_1663525999247620_06d2bf8b43be9b79a3e89edf3b53e367
+[2022-09-18 18:33:26,876] {taskinstance.py:1142} INFO - Marking task as SUCCESS. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220918T183316, end_date=20220918T183326
+[2022-09-18 18:33:29,035] {local_task_job.py:170} WARNING - State of this instance has been externally set to success. Terminating instance.
+[2022-09-18 18:33:29,380] {process_utils.py:95} INFO - Sending Signals.SIGTERM to GPID 2098
+[2022-09-18 18:33:29,404] {taskinstance.py:1214} ERROR - Received SIGTERM. Terminating subprocesses.
+[2022-09-18 18:33:29,421] {bigquery.py:740} INFO - Cancelling running query
+[2022-09-18 18:33:29,529] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:1371 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.cancel_job`.
+[2022-09-18 18:33:30,558] {bigquery.py:1398} INFO - No running BigQuery jobs to cancel.
+[2022-09-18 18:33:30,861] {process_utils.py:61} INFO - Process psutil.Process(pid=2098, status='terminated', exitcode=1, started='18:33:16') (2098) terminated with exit code 1
+[2022-09-18 18:33:30,887] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-18 18:42:53,269] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:42:53,395] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 18:42:53,398] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:42:53,399] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-18 18:42:53,400] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 18:42:53,510] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-18 18:42:53,572] {standard_task_runner.py:51} INFO - Started process 2650 to run task
+[2022-09-18 18:42:53,657] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '327', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmpk5d2lqu4']
+[2022-09-18 18:42:53,674] {standard_task_runner.py:76} INFO - Job 327: Subtask query_big_query_table
+[2022-09-18 18:42:54,050] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-18 18:42:54,451] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-18 18:42:54,484] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-18 18:42:54,624] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 18:42:54,779] {bigquery.py:1510} INFO - Inserting job airflow_1663526574772280_06d2bf8b43be9b79a3e89edf3b53e367
+[2022-09-18 18:42:56,749] {taskinstance.py:1142} INFO - Marking task as SUCCESS. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220918T184253, end_date=20220918T184256
+[2022-09-18 18:42:57,501] {taskinstance.py:1195} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-09-18 18:42:57,617] {local_task_job.py:118} INFO - Task exited with return code 0
+[2022-09-18 19:42:20,720] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 19:42:20,839] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [queued]>
+[2022-09-18 19:42:20,841] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 19:42:20,843] {taskinstance.py:1018} INFO - Starting attempt 1 of 3
+[2022-09-18 19:42:20,844] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-18 19:42:20,897] {taskinstance.py:1038} INFO - Executing <Task(BigQueryOperator): query_big_query_table> on 2022-09-13T03:00:00+00:00
+[2022-09-18 19:42:20,919] {standard_task_runner.py:51} INFO - Started process 4217 to run task
+[2022-09-18 19:42:20,951] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'bigquery_dag', 'query_big_query_table', '2022-09-13T03:00:00+00:00', '--job-id', '438', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_bigquery.py', '--cfg-path', '/tmp/tmp4b192o2f']
+[2022-09-18 19:42:20,963] {standard_task_runner.py:76} INFO - Job 438: Subtask query_big_query_table
+[2022-09-18 19:42:21,171] {logging_mixin.py:103} INFO - Running <TaskInstance: bigquery_dag.query_big_query_table 2022-09-13T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-18 19:42:21,391] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=bigquery_dag
+AIRFLOW_CTX_TASK_ID=query_big_query_table
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-13T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-13T03:00:00+00:00
+[2022-09-18 19:42:21,416] {bigquery.py:680} INFO - Executing: 
+           select id from githubarchive.day.20220914
+        
+[2022-09-18 19:42:21,490] {logging_mixin.py:103} WARNING - /home/airflow/.local/lib/python3.6/site-packages/airflow/providers/google/cloud/hooks/bigquery.py:2052 DeprecationWarning: This method is deprecated. Please use `BigQueryHook.insert_job` method.
+[2022-09-18 19:42:21,617] {bigquery.py:1510} INFO - Inserting job airflow_1663530141614362_06d2bf8b43be9b79a3e89edf3b53e367
+[2022-09-18 19:42:23,025] {taskinstance.py:1142} INFO - Marking task as SUCCESS. dag_id=bigquery_dag, task_id=query_big_query_table, execution_date=20220913T030000, start_date=20220918T194220, end_date=20220918T194223
+[2022-09-18 19:42:23,461] {taskinstance.py:1195} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-09-18 19:42:23,567] {local_task_job.py:118} INFO - Task exited with return code 0

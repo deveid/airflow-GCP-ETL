@@ -1,0 +1,110 @@
+[2022-09-13 13:37:21,251] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.insert_records 2022-09-10T03:00:00+00:00 [queued]>
+[2022-09-13 13:37:21,398] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.insert_records 2022-09-10T03:00:00+00:00 [queued]>
+[2022-09-13 13:37:21,403] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 13:37:21,406] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-13 13:37:21,411] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 13:37:21,536] {taskinstance.py:1038} INFO - Executing <Task(PostgresOperator): insert_records> on 2022-09-10T03:00:00+00:00
+[2022-09-13 13:37:21,566] {standard_task_runner.py:51} INFO - Started process 40683 to run task
+[2022-09-13 13:37:21,583] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'postgres_dag', 'insert_records', '2022-09-10T03:00:00+00:00', '--job-id', '27', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmp_hbbmjtm']
+[2022-09-13 13:37:21,592] {standard_task_runner.py:76} INFO - Job 27: Subtask insert_records
+[2022-09-13 13:37:21,828] {logging_mixin.py:103} INFO - Running <TaskInstance: postgres_dag.insert_records 2022-09-10T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-13 13:37:22,148] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=postgres_dag
+AIRFLOW_CTX_TASK_ID=insert_records
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-10T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-10T03:00:00+00:00
+[2022-09-13 13:37:22,179] {postgres.py:69} INFO - Executing: 
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l101','Bayo','Lanre','Software-developer');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l1201','Diaz','Mora','Data Scientist');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l4101','Chris','Muff','scrum-master');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l1301','Inder','Ajith','Manager');
+        
+[2022-09-13 13:37:22,309] {base.py:74} INFO - Using connection to: id: local_postgres. Host: 0.0.0.0, Port: 5432, Schema: airflow, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-09-13 13:37:22,326] {taskinstance.py:1396} ERROR - could not connect to server: Connection refused
+	Is the server running on host "0.0.0.0" and accepting
+	TCP/IP connections on port 5432?
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 71, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 173, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/hooks/postgres.py", line 108, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+  File "/home/airflow/.local/lib/python3.6/site-packages/psycopg2/__init__.py", line 127, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "0.0.0.0" and accepting
+	TCP/IP connections on port 5432?
+
+[2022-09-13 13:37:22,388] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=postgres_dag, task_id=insert_records, execution_date=20220910T030000, start_date=20220913T133721, end_date=20220913T133722
+[2022-09-13 13:37:22,685] {local_task_job.py:118} INFO - Task exited with return code 1
+[2022-09-13 14:58:36,117] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.insert_records 2022-09-10T03:00:00+00:00 [queued]>
+[2022-09-13 14:58:36,190] {taskinstance.py:826} INFO - Dependencies all met for <TaskInstance: postgres_dag.insert_records 2022-09-10T03:00:00+00:00 [queued]>
+[2022-09-13 14:58:36,191] {taskinstance.py:1017} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 14:58:36,194] {taskinstance.py:1018} INFO - Starting attempt 2 of 3
+[2022-09-13 14:58:36,201] {taskinstance.py:1019} INFO - 
+--------------------------------------------------------------------------------
+[2022-09-13 14:58:36,250] {taskinstance.py:1038} INFO - Executing <Task(PostgresOperator): insert_records> on 2022-09-10T03:00:00+00:00
+[2022-09-13 14:58:36,309] {standard_task_runner.py:51} INFO - Started process 59784 to run task
+[2022-09-13 14:58:36,355] {standard_task_runner.py:75} INFO - Running: ['airflow', 'tasks', 'run', 'postgres_dag', 'insert_records', '2022-09-10T03:00:00+00:00', '--job-id', '82', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_postgres.py', '--cfg-path', '/tmp/tmpq__nr1fn']
+[2022-09-13 14:58:36,391] {standard_task_runner.py:76} INFO - Job 82: Subtask insert_records
+[2022-09-13 14:58:36,744] {logging_mixin.py:103} INFO - Running <TaskInstance: postgres_dag.insert_records 2022-09-10T03:00:00+00:00 [running]> on host 27377494ab8b
+[2022-09-13 14:58:37,154] {taskinstance.py:1232} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Dave
+AIRFLOW_CTX_DAG_ID=postgres_dag
+AIRFLOW_CTX_TASK_ID=insert_records
+AIRFLOW_CTX_EXECUTION_DATE=2022-09-10T03:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-09-10T03:00:00+00:00
+[2022-09-13 14:58:37,162] {postgres.py:69} INFO - Executing: 
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l101','Bayo','Lanre','Software-developer');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l1201','Diaz','Mora','Data Scientist');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l4101','Chris','Muff','scrum-master');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l1301','Inder','Ajith','Manager');
+        
+[2022-09-13 14:58:37,311] {base.py:74} INFO - Using connection to: id: local_postgres. Host: host.docker.internal, Port: 5432, Schema: student, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-09-13 14:58:37,452] {dbapi.py:180} INFO - Running statement: 
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l101','Bayo','Lanre','Software-developer');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l1201','Diaz','Mora','Data Scientist');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l4101','Chris','Muff','scrum-master');
+            INSERT INTO employee (emp_id,first_name,last_name,designation)
+            VALUES ('l1301','Inder','Ajith','Manager');
+        , parameters: None
+[2022-09-13 14:58:37,469] {taskinstance.py:1396} ERROR - duplicate key value violates unique constraint "employee_pkey"
+DETAIL:  Key (emp_id)=(l101) already exists.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1086, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1260, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1300, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 71, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 184, in run
+    cur.execute(sql_statement)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "employee_pkey"
+DETAIL:  Key (emp_id)=(l101) already exists.
+
+[2022-09-13 14:58:37,560] {taskinstance.py:1440} INFO - Marking task as UP_FOR_RETRY. dag_id=postgres_dag, task_id=insert_records, execution_date=20220910T030000, start_date=20220913T145836, end_date=20220913T145837
+[2022-09-13 14:58:38,217] {local_task_job.py:118} INFO - Task exited with return code 1
