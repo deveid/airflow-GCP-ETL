@@ -26,7 +26,7 @@ with DAG (
     schedule_interval='@daily'
 ) as dag:
     task1=PostgresOperator(
-        task_id='create_employee_table',
+        task_id='creeate_employee_table',
         postgres_conn_id='local_postgres',
         sql="""
             create table if not exists employee(
